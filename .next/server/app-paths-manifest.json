@@ -1,0 +1,11 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/ai/page": "app/ai/page.js",
+  "/demo/page": "app/demo/page.js",
+  "/design-notes/page": "app/design-notes/page.js",
+  "/page": "app/page.js",
+  "/philosophy/page": "app/philosophy/page.js",
+  "/systems/[id]/page": "app/systems/[id]/page.js",
+  "/systems/page": "app/systems/page.js"
+}
