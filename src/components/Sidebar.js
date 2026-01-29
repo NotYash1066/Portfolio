@@ -37,7 +37,6 @@ export default function Sidebar() {
                     background: 'var(--bg-secondary)',
                     border: '1px solid var(--border-color)',
                     padding: '0.5rem',
-                    display: 'none', // Hidden on desktop via CSS media query
                     color: 'var(--text-primary)',
                     cursor: 'pointer'
                 }}
@@ -69,6 +68,7 @@ export default function Sidebar() {
 
                 <div className="nav-section" style={{ marginTop: 'auto' }}>
                     <span className="nav-header">Links</span>
+                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: 'var(--text-primary)' }}>Resume (PDF)</a>
                     <a href="https://github.com/NotYash1066" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
                     <a href="https://www.linkedin.com/in/yash-karthiya-b03906336/" target="_blank" rel="noopener noreferrer" className="nav-link">LinkedIn</a>
                     <a href="mailto:yash.karthiya.1066@gmail.com" className="nav-link">Email</a>
