@@ -16,8 +16,8 @@ export default function CommandPalette() {
         { name: 'Systems Index', path: '/systems' },
         { name: 'Design Notes', path: '/design-notes' },
         { name: 'Applied AI', path: '/ai' },
-        { name: 'Live Status Demo', path: '/demo' },
         { name: 'Philosophy', path: '/philosophy' },
+        { name: 'Contact Me', path: '/contact' },
         // Systems
         { name: 'System: CollegeInfo-Agent', path: '/systems/college-info-agent' },
         { name: 'System: Shop Management', path: '/systems/shop-management-system' },

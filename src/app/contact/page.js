@@ -8,7 +8,7 @@ export const metadata = {
 export default function ContactPage() {
     return (
         <div className="section-container">
-            <h1>[06] Contact</h1>
+            <h1>CONTACT</h1>
             <p style={{ marginBottom: '2rem' }}>
                 For collaborations, opportunities, or technical inquiries.
             </p>

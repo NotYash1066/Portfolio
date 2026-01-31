@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { projects } from '@/data/projects';
 
+export const metadata = {
+    title: 'Systems Architecture | Yash Karthiya',
+    description: 'Case studies of high-throughput backend systems, distributed architectures, and practical AI implementations.',
+};
+
 export default function SystemsPage() {
     return (
         <div className="section-container">
-            <h1>[02] Systems I Build</h1>
+            <h1>SYSTEMS ARCHITECTURE</h1>
             <p style={{ marginBottom: '3rem' }}>
                 A collection of engineering case studies focusing on backend architecture,
                 system design, and practical AI implementation.

@@ -32,7 +32,7 @@ export default function DesignNotesPage() {
 
     return (
         <div className="section-container">
-            <h1>[03] Design Notes</h1>
+            <h1>DESIGN NOTES</h1>
             <p style={{ marginBottom: '3rem' }}>
                 Engineering logs, decision records, and technical essays. No fluff.
             </p>

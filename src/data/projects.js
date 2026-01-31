@@ -3,7 +3,7 @@ export const projects = [
         id: 'college-info-agent',
         title: 'CollegeInfo-Agent: RAG Academic Assistant',
         techStack: ['FastAPI', 'ChromaDB', 'LangChain', 'OpenAI/Gemini', 'React'],
-        shortDescription: 'Multi-tenant RAG system for answering student queries from 500+ institutional documents.',
+        shortDescription: 'Backend System using FastAPI and Vector Databases. Multi-tenant RAG system for answering student queries from 500+ institutional documents.',
         problemStatement: 'Students and faculty struggle to find specific information buried in hundreds of unstructured PDF documents (syllabus, notices, calendars), leading to administrative bottlenecks.',
         solution: 'Built a Retrieval-Augmented Generation (RAG) pipeline that ingests PDFs, chunks and embeds them into a local vector store (ChromaDB), and retrieves relevant context for an LLM to answer queries accurately with citations.',
         architecture: [
@@ -43,7 +43,7 @@ export const projects = [
         id: 'shop-management-system',
         title: 'Shop Management System (REST API)',
         techStack: ['Spring Boot', 'Java 17', 'PostgreSQL', 'Hibernate', 'Spring Security'],
-        shortDescription: 'Robust inventory management API handling products, suppliers, and stock levels for 500+ SKUs.',
+        shortDescription: 'Java Spring Boot REST API for Inventory Management. Robust system handling products, suppliers, and stock levels for 500+ SKUs.',
         problemStatement: 'Retail shops often rely on manual tracking or disconnected spreadsheets, leading to stock discrepancies and employee theft.',
         solution: 'Designed a centralized RESTful API to manage inventory state, track employee actions, and automate stock alerts. Enforces data integrity through a relational schema.',
         architecture: [
@@ -84,7 +84,7 @@ export const projects = [
         id: 'skill-swap',
         title: 'Skill-Swap: Real-time P2P Platform',
         techStack: ['Node.js', 'Express', 'MongoDB', 'Socket.io', 'WebRTC'],
-        shortDescription: 'Peer-to-peer skill exchange platform with real-time video/chat and collaborative whiteboard.',
+        shortDescription: 'Real-time Node.js application using WebRTC and Socket.io. Peer-to-peer skill exchange platform with video/chat and collaborative whiteboard.',
         problemStatement: 'Learners lack affordable, real-time interactive platforms to exchange skills directly with peers without intermediaries.',
         solution: 'Created a real-time platform facilitating direct P2P connections via WebRTC video calls and low-latency Socket.io messaging.',
         architecture: [
@@ -116,7 +116,7 @@ export const projects = [
         id: 'safe-plate',
         title: 'Safe-Plate: AI Food Ingredient Scanner',
         techStack: ['FastAPI', 'React', 'Google Gemini', 'OCR (Tesseract)', 'Python'],
-        shortDescription: 'Analysis pipeline that scans food labels to detect allergens, hidden sugars, and additives.',
+        shortDescription: 'AI Pipeline using Python FastAPI and LLMs. Analysis engine that scans food labels to detect allergens, hidden sugars, and additives.',
         problemStatement: 'Consumers struggle to understand complex chemical names in ingredient lists and identify hidden health risks like sugar aliases.',
         solution: 'A pipeline that OCRs ingredient text from images, classifies additives using a hybrid approach (Static DB + LLM fallback), and generates plain-English health scores.',
         architecture: [

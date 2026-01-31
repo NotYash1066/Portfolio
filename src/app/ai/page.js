@@ -1,7 +1,12 @@
+export const metadata = {
+    title: 'Applied AI | Yash Karthiya',
+    description: 'Principles of practical AI engineering: Deterministic rules first, RAG for grounding, and cost-effective model selection.',
+};
+
 export default function AIPage() {
     return (
         <div className="section-container">
-            <h1>[04] AI, Used Practically</h1>
+            <h1>APPLIED AI</h1>
 
             <p style={{ marginBottom: '3rem' }}>
                 AI is a tool, not a magic wand. My approach emphasizes restraint,

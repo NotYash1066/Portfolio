@@ -15,7 +15,7 @@ export default function Sidebar() {
     };
 
     const navLinks = [
-        { name: '01_Overview', path: '/' },
+        { name: '01_Home', path: '/' },
         { name: '02_Systems', path: '/systems' },
         { name: '03_Design_Notes', path: '/design-notes' },
         { name: '04_Applied_AI', path: '/ai' },
@@ -83,7 +83,6 @@ export default function Sidebar() {
                     <a href="/resume.pdf" download="Yash_Karthiya_Resume" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: 'var(--text-primary)' }}>Resume (PDF)</a>
                     <a href="https://github.com/NotYash1066" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
                     <a href="https://www.linkedin.com/in/yash-karthiya-b03906336/" target="_blank" rel="noopener noreferrer" className="nav-link">LinkedIn</a>
-                    <a href="mailto:yash.karthiya.1066@gmail.com" className="nav-link">Email</a>
                 </div>
 
                 <div style={{ marginTop: '2rem', fontSize: '0.7rem', color: '#444', borderTop: '1px solid #222', paddingTop: '1rem' }}>

@@ -1,7 +1,12 @@
+export const metadata = {
+    title: 'Philosophy | Yash Karthiya',
+    description: 'My engineering mindset: Backend stability over frontend polish, defensive programming, and choosing the right tool for the job.',
+};
+
 export default function PhilosophyPage() {
     return (
         <div className="section-container">
-            <h1>[06] How I Think</h1>
+            <h1>PHILOSOPHY</h1>
 
             <div className="philosophy-section" style={{ marginBottom: '4rem' }}>
                 <h2>Backend First</h2>
