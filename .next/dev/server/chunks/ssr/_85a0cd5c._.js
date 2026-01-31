@@ -90,8 +90,81 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Command
 ;
 ;
 const metadata = {
-    title: 'Yash Karthiya | Backend Engineer',
-    description: 'Engineering documentation and system design portfolio.'
+    metadataBase: new URL('https://yashkarthiya.in'),
+    title: {
+        default: 'Yash Karthiya | Backend Engineer & Systems Architect',
+        template: '%s | Yash Karthiya'
+    },
+    description: 'Engineering documentation of Yash Karthiya. Specializing in high-throughput backend systems, distributed architectures, and applied AI pipelines. Seeking Backend Engineering Intern roles in Ahmedabad and RAG Engineer positions.',
+    keywords: [
+        'Backend Engineer',
+        'Systems Architect',
+        'Distributed Systems',
+        'Applied AI',
+        'Spring Boot',
+        'FastAPI',
+        'System Design',
+        'Yash Karthiya',
+        'Backend Engineering Intern Ahmedabad',
+        'AI Engineering Intern',
+        'RAG Engineer'
+    ],
+    authors: [
+        {
+            name: 'Yash Karthiya',
+            url: 'https://yashkarthiya.in'
+        }
+    ],
+    creator: 'Yash Karthiya',
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://yashkarthiya.in',
+        title: 'Yash Karthiya | Backend Engineer & Systems Architect',
+        description: 'Engineering documentation of Yash Karthiya. Deep dives into system design, backend architecture, and AI.',
+        siteName: 'Yash Karthiya Portfolio',
+        images: [
+            {
+                url: '/og-image.png',
+                width: 1200,
+                height: 630,
+                alt: 'Yash Karthiya - Backend Engineer'
+            }
+        ]
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Yash Karthiya | Backend Engineer',
+        description: 'Building robust backend systems and scalable architectures.'
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1
+        }
+    }
+};
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Yash Karthiya',
+    url: 'https://yashkarthiya.in',
+    jobTitle: 'Backend Engineer',
+    sameAs: [
+        'https://github.com/NotYash1066',
+        'https://linkedin.com/in/yash-karthiya'
+    ],
+    knowsAbout: [
+        'Backend Engineering',
+        'Distrubuted Systems',
+        'System Architecture',
+        'Applied AI'
+    ]
 };
 function RootLayout({ children }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("html", {
@@ -100,14 +173,24 @@ function RootLayout({ children }) {
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "layout-container",
                 children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("script", {
+                        type: "application/ld+json",
+                        dangerouslySetInnerHTML: {
+                            __html: JSON.stringify(jsonLd)
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/src/app/layout.js",
+                        lineNumber: 69,
+                        columnNumber: 21
+                    }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Sidebar$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/app/layout.js",
-                        lineNumber: 16,
+                        lineNumber: 73,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CommandPalette$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/src/app/layout.js",
-                        lineNumber: 17,
+                        lineNumber: 74,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -127,42 +210,42 @@ function RootLayout({ children }) {
                                         children: "System reliability • Trust • Engineering Thinking"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/layout.js",
-                                        lineNumber: 23,
+                                        lineNumber: 80,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "© 2027 Yash Karthiya. Built with Next.js (SSG)."
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/layout.js",
-                                        lineNumber: 24,
+                                        lineNumber: 81,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/layout.js",
-                                lineNumber: 22,
+                                lineNumber: 79,
                                 columnNumber: 25
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/layout.js",
-                        lineNumber: 19,
+                        lineNumber: 76,
                         columnNumber: 21
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/layout.js",
-                lineNumber: 15,
+                lineNumber: 68,
                 columnNumber: 17
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/layout.js",
-            lineNumber: 14,
+            lineNumber: 67,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/layout.js",
-        lineNumber: 13,
+        lineNumber: 66,
         columnNumber: 9
     }, this);
 }

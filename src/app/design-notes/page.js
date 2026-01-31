@@ -1,3 +1,10 @@
+import DesignNoteList from '@/components/DesignNoteList';
+
+export const metadata = {
+    title: 'Design Notes | Yash Karthiya',
+    description: 'Engineering logs, decision records, and technical essays on RAG, Distributed Systems, and Database Architecture.',
+};
+
 export default function DesignNotesPage() {
     const notes = [
         {
@@ -5,21 +12,21 @@ export default function DesignNotesPage() {
             date: '2026-05-12',
             title: 'Designing RAG for Hundreds of Documents',
             summary: 'Strategies for efficient chunking and retrieval when dealing with diverse institutional data formats.',
-            content: 'When building CollegeInfo-Agent, naïve chunking failed for tables. We moved to a semantic-aware splitter...'
+            content: 'When building CollegeInfo-Agent, naïve chunking failed for tables. We moved to a semantic-aware splitter that respects document boundaries. By storing metadata alongside vectors, we improved retrieval accuracy by 40%. We also implemented a hybrid search (Keywork + Vector) using MongoDB Atlas Search to handle specific query terms better than pure semantic search.'
         },
         {
             id: 2,
             date: '2026-04-03',
             title: 'JWT Authentication: Key Mistakes',
             summary: 'Why storing tokens in localStorage is dangerous and how httpOnly cookies solve XSS vulnerabilities.',
-            content: 'In Skill-Swap, I initially stored JWTs in localStorage. After researching XSS vectors, I migrated to httpOnly cookies...'
+            content: 'In Skill-Swap, I initially stored JWTs in localStorage. After researching XSS vectors, I migrated to httpOnly cookies. This prevents malicious scripts from reading the token. I also implemented a refresh token rotation strategy to handle session expiry gracefully without forcing the user to log in repeatedly.'
         },
         {
             id: 3,
             date: '2026-02-15',
             title: 'SQL vs NoSQL: A Decision Framework',
             summary: 'Why I chose PostgreSQL for the Shop System but MongoDB for Skill-Swap.',
-            content: 'The Shop System required strict ACID guarantees for inventory. Skill-Swap needed flexible schemas for user profiles...'
+            content: 'The Shop System required strict ACID guarantees for inventory management, making PostgreSQL the clear winner. We used transactions to ensure no stock was sold twice. Skill-Swap, however, needed flexible schemas for user profiles and diverse service listings, so MongoDB was a better fit for rapid iteration.'
         }
     ];
 
@@ -30,16 +37,7 @@ export default function DesignNotesPage() {
                 Engineering logs, decision records, and technical essays. No fluff.
             </p>
 
-            <div className="notes-list">
-                {notes.map(note => (
-                    <div key={note.id} style={{ marginBottom: '3rem', borderLeft: '2px solid var(--border-color)', paddingLeft: '1.5rem' }}>
-                        <div className="text-sec" style={{ fontSize: '0.8rem', fontFamily: 'monospace' }}>{note.date}</div>
-                        <h2 style={{ marginTop: '0.5rem', marginBottom: '0.5rem', border: 'none', fontSize: '1.3rem' }}>{note.title}</h2>
-                        <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>{note.summary}</p>
-                        <p className="text-sec" style={{ fontSize: '0.9rem' }}>{note.content} <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>[Read More...]</span></p>
-                    </div>
-                ))}
-            </div>
+            <DesignNoteList notes={notes} />
         </div>
     );
 }

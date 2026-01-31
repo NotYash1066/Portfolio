@@ -1,4 +1,7 @@
 {
+  "/ai/page": "app/ai/page.js",
+  "/demo/page": "app/demo/page.js",
+  "/design-notes/page": "app/design-notes/page.js",
   "/page": "app/page.js",
   "/philosophy/page": "app/philosophy/page.js",
   "/systems/[id]/page": "app/systems/[id]/page.js",

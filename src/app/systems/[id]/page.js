@@ -10,6 +10,28 @@ export async function generateStaticParams() {
     }));
 }
 
+export async function generateMetadata({ params }) {
+    const { id } = await params;
+    const project = projects.find(p => p.id === id);
+
+    if (!project) {
+        return {
+            title: 'System Not Found',
+            description: 'The requested system architecture document could not be found.',
+        };
+    }
+
+    return {
+        title: project.title,
+        description: project.shortDescription,
+        openGraph: {
+            title: `${project.title} | System Architecture`,
+            description: project.shortDescription,
+            // images: project.image ? [project.image] : [], // If you have project images later
+        },
+    };
+}
+
 export default async function ProjectPage({ params }) {
     // In Next.js 15+, params is a Promise, but for 13/14 it's an object. 
     // To be safe in newer versions, we await it if it's a promise, or just use it.

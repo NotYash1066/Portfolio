@@ -1,37 +1,51 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import mermaid from 'mermaid';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Mermaid({ chart, id }) {
     const ref = useRef(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-                darkMode: true,
-                background: '#111',
-                primaryColor: '#222',
-                primaryTextColor: '#fff',
-                primaryBorderColor: '#fff',
-                lineColor: '#aaa',
-                secondaryColor: '#333',
-                tertiaryColor: '#111'
-            },
-            securityLevel: 'loose',
-        });
+        let isCancelled = false;
+        setLoading(true);
 
         const renderChart = async () => {
             if (ref.current) {
                 try {
+                    const mermaid = (await import('mermaid')).default;
+
+                    if (isCancelled) return;
+
+                    mermaid.initialize({
+                        startOnLoad: true,
+                        theme: 'base',
+                        themeVariables: {
+                            darkMode: true,
+                            background: '#111',
+                            primaryColor: '#222',
+                            primaryTextColor: '#fff',
+                            primaryBorderColor: '#fff',
+                            lineColor: '#aaa',
+                            secondaryColor: '#333',
+                            tertiaryColor: '#111'
+                        },
+                        securityLevel: 'loose',
+                    });
+
                     ref.current.innerHTML = ''; // Clear previous
                     const { svg } = await mermaid.render(`mermaid-${id}-${Date.now()}`, chart);
-                    ref.current.innerHTML = svg;
+
+                    if (!isCancelled && ref.current) {
+                        ref.current.innerHTML = svg;
+                        setLoading(false);
+                    }
                 } catch (err) {
                     console.error('Mermaid Render Error:', err);
-                    ref.current.innerHTML = '<div style="color:red; border:1px solid red; padding:1rem;">Failed to render diagram</div>';
+                    if (!isCancelled && ref.current) {
+                        ref.current.innerHTML = '<div style="color:var(--error); border:1px dashed var(--error); padding:1rem;">Failed to render diagram</div>';
+                        setLoading(false);
+                    }
                 }
             }
         };
@@ -41,7 +55,10 @@ export default function Mermaid({ chart, id }) {
             renderChart();
         }, 100);
 
-        return () => clearTimeout(timer);
+        return () => {
+            isCancelled = true;
+            clearTimeout(timer);
+        };
     }, [chart, id]);
 
     return (
@@ -51,9 +68,14 @@ export default function Mermaid({ chart, id }) {
             background: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             marginBottom: '1rem',
-            overflowX: 'auto'
+            overflowX: 'auto',
+            minHeight: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
         }}>
-            <div ref={ref} />
+            {loading && <div style={{ fontFamily: 'monospace', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>[ Initializing Diagram... ]</div>}
+            <div ref={ref} style={{ display: loading ? 'none' : 'block' }} />
         </div>
     );
 }

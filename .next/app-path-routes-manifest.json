@@ -2,10 +2,13 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/ai/page": "/ai",
-  "/demo/page": "/demo",
+  "/api/contact/route": "/api/contact",
+  "/contact/page": "/contact",
   "/design-notes/page": "/design-notes",
   "/page": "/",
   "/philosophy/page": "/philosophy",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
   "/systems/[id]/page": "/systems/[id]",
   "/systems/page": "/systems"
 }

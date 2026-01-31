@@ -314,6 +314,8 @@ function Breadcrumbs({ items }) {
 __turbopack_context__.s([
     "default",
     ()=>ProjectPage,
+    "generateMetadata",
+    ()=>generateMetadata,
     "generateStaticParams",
     ()=>generateStaticParams
 ]);
@@ -332,6 +334,24 @@ async function generateStaticParams() {
             id: project.id
         }));
 }
+async function generateMetadata({ params }) {
+    const { id } = await params;
+    const project = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$data$2f$projects$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["projects"].find((p)=>p.id === id);
+    if (!project) {
+        return {
+            title: 'System Not Found',
+            description: 'The requested system architecture document could not be found.'
+        };
+    }
+    return {
+        title: project.title,
+        description: project.shortDescription,
+        openGraph: {
+            title: `${project.title} | System Architecture`,
+            description: project.shortDescription
+        }
+    };
+}
 async function ProjectPage({ params }) {
     // In Next.js 15+, params is a Promise, but for 13/14 it's an object. 
     // To be safe in newer versions, we await it if it's a promise, or just use it.
@@ -344,7 +364,7 @@ async function ProjectPage({ params }) {
             children: "System not found."
         }, void 0, false, {
             fileName: "[project]/src/app/systems/[id]/page.js",
-            lineNumber: 23,
+            lineNumber: 45,
             columnNumber: 16
         }, this);
     }
@@ -362,7 +382,7 @@ async function ProjectPage({ params }) {
                 children: "< Back to Index"
             }, void 0, false, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 28,
+                lineNumber: 50,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -373,7 +393,7 @@ async function ProjectPage({ params }) {
                 children: project.title
             }, void 0, false, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 32,
+                lineNumber: 54,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -393,12 +413,12 @@ async function ProjectPage({ params }) {
                         ]
                     }, tech, true, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 35,
+                        lineNumber: 57,
                         columnNumber: 21
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 33,
+                lineNumber: 55,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -408,7 +428,7 @@ async function ProjectPage({ params }) {
                         children: "01_Context & Problem"
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 40,
+                        lineNumber: 62,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -419,13 +439,13 @@ async function ProjectPage({ params }) {
                         children: project.problemStatement
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 41,
+                        lineNumber: 63,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 39,
+                lineNumber: 61,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -435,7 +455,7 @@ async function ProjectPage({ params }) {
                         children: "02_Architecture & Design"
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 45,
+                        lineNumber: 67,
                         columnNumber: 17
                     }, this),
                     project.mermaid && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Mermaid$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -443,7 +463,7 @@ async function ProjectPage({ params }) {
                         id: project.id
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 47,
+                        lineNumber: 69,
                         columnNumber: 21
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -460,12 +480,12 @@ async function ProjectPage({ params }) {
                                 children: `> ${line}`
                             }, i, false, {
                                 fileName: "[project]/src/app/systems/[id]/page.js",
-                                lineNumber: 59,
+                                lineNumber: 81,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 49,
+                        lineNumber: 71,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -473,13 +493,13 @@ async function ProjectPage({ params }) {
                         children: project.solution
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 62,
+                        lineNumber: 84,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 44,
+                lineNumber: 66,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -489,7 +509,7 @@ async function ProjectPage({ params }) {
                         children: "03_Key Technical Decisions"
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 66,
+                        lineNumber: 88,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -511,7 +531,7 @@ async function ProjectPage({ params }) {
                                         children: "Decision:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/systems/[id]/page.js",
-                                        lineNumber: 70,
+                                        lineNumber: 92,
                                         columnNumber: 29
                                     }, this),
                                     " ",
@@ -520,24 +540,24 @@ async function ProjectPage({ params }) {
                                         children: decision
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/systems/[id]/page.js",
-                                        lineNumber: 70,
+                                        lineNumber: 92,
                                         columnNumber: 97
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/src/app/systems/[id]/page.js",
-                                lineNumber: 69,
+                                lineNumber: 91,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 67,
+                        lineNumber: 89,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 65,
+                lineNumber: 87,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -547,7 +567,7 @@ async function ProjectPage({ params }) {
                         children: "04_Challenges & Resolutions"
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 77,
+                        lineNumber: 99,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -564,7 +584,7 @@ async function ProjectPage({ params }) {
                                         children: "! WARNING:"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/systems/[id]/page.js",
-                                        lineNumber: 81,
+                                        lineNumber: 103,
                                         columnNumber: 29
                                     }, this),
                                     " ",
@@ -573,24 +593,24 @@ async function ProjectPage({ params }) {
                                         children: challenge
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/systems/[id]/page.js",
-                                        lineNumber: 81,
+                                        lineNumber: 103,
                                         columnNumber: 89
                                     }, this)
                                 ]
                             }, i, true, {
                                 fileName: "[project]/src/app/systems/[id]/page.js",
-                                lineNumber: 80,
+                                lineNumber: 102,
                                 columnNumber: 25
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/app/systems/[id]/page.js",
-                        lineNumber: 78,
+                        lineNumber: 100,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 76,
+                lineNumber: 98,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -607,18 +627,18 @@ async function ProjectPage({ params }) {
                     children: "[View Source Code on GitHub]"
                 }, void 0, false, {
                     fileName: "[project]/src/app/systems/[id]/page.js",
-                    lineNumber: 88,
+                    lineNumber: 110,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/systems/[id]/page.js",
-                lineNumber: 87,
+                lineNumber: 109,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/systems/[id]/page.js",
-        lineNumber: 27,
+        lineNumber: 49,
         columnNumber: 9
     }, this);
 }

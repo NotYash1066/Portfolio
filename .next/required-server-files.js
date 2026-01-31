@@ -70,7 +70,9 @@ self.__SERVER_FILES_MANIFEST={
       "unoptimized": false
     },
     "devIndicators": {
-      "position": "bottom-left"
+      "position": "bottom-left",
+      "appIsrStatus": false,
+      "buildActivity": false
     },
     "onDemandEntries": {
       "maxInactiveAge": 60000,

@@ -8,42 +8,51 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mermaid$2f$dist$2f$mermaid$2e$core$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/mermaid/dist/mermaid.core.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
 ;
-;
 function Mermaid({ chart, id }) {
     _s();
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Mermaid.useEffect": ()=>{
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mermaid$2f$dist$2f$mermaid$2e$core$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].initialize({
-                startOnLoad: true,
-                theme: 'base',
-                themeVariables: {
-                    darkMode: true,
-                    background: '#111',
-                    primaryColor: '#222',
-                    primaryTextColor: '#fff',
-                    primaryBorderColor: '#fff',
-                    lineColor: '#aaa',
-                    secondaryColor: '#333',
-                    tertiaryColor: '#111'
-                },
-                securityLevel: 'loose'
-            });
+            let isCancelled = false;
+            setLoading(true);
             const renderChart = {
                 "Mermaid.useEffect.renderChart": async ()=>{
                     if (ref.current) {
                         try {
+                            const mermaid = (await __turbopack_context__.A("[project]/node_modules/mermaid/dist/mermaid.core.mjs [app-client] (ecmascript, async loader)")).default;
+                            if (isCancelled) return;
+                            mermaid.initialize({
+                                startOnLoad: true,
+                                theme: 'base',
+                                themeVariables: {
+                                    darkMode: true,
+                                    background: '#111',
+                                    primaryColor: '#222',
+                                    primaryTextColor: '#fff',
+                                    primaryBorderColor: '#fff',
+                                    lineColor: '#aaa',
+                                    secondaryColor: '#333',
+                                    tertiaryColor: '#111'
+                                },
+                                securityLevel: 'loose'
+                            });
                             ref.current.innerHTML = ''; // Clear previous
-                            const { svg } = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$mermaid$2f$dist$2f$mermaid$2e$core$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].render(`mermaid-${id}-${Date.now()}`, chart);
-                            ref.current.innerHTML = svg;
+                            const { svg } = await mermaid.render(`mermaid-${id}-${Date.now()}`, chart);
+                            if (!isCancelled && ref.current) {
+                                ref.current.innerHTML = svg;
+                                setLoading(false);
+                            }
                         } catch (err) {
                             console.error('Mermaid Render Error:', err);
-                            ref.current.innerHTML = '<div style="color:red; border:1px solid red; padding:1rem;">Failed to render diagram</div>';
+                            if (!isCancelled && ref.current) {
+                                ref.current.innerHTML = '<div style="color:var(--error); border:1px dashed var(--error); padding:1rem;">Failed to render diagram</div>';
+                                setLoading(false);
+                            }
                         }
                     }
                 }
@@ -55,7 +64,10 @@ function Mermaid({ chart, id }) {
                 }
             }["Mermaid.useEffect.timer"], 100);
             return ({
-                "Mermaid.useEffect": ()=>clearTimeout(timer)
+                "Mermaid.useEffect": ()=>{
+                    isCancelled = true;
+                    clearTimeout(timer);
+                }
             })["Mermaid.useEffect"];
         }
     }["Mermaid.useEffect"], [
@@ -70,22 +82,43 @@ function Mermaid({ chart, id }) {
             background: 'var(--bg-secondary)',
             border: '1px solid var(--border-color)',
             marginBottom: '1rem',
-            overflowX: 'auto'
+            overflowX: 'auto',
+            minHeight: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
         },
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            ref: ref
-        }, void 0, false, {
-            fileName: "[project]/src/components/Mermaid.js",
-            lineNumber: 56,
-            columnNumber: 13
-        }, this)
-    }, id, false, {
+        children: [
+            loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    fontFamily: 'monospace',
+                    fontSize: '0.8rem',
+                    color: 'var(--text-secondary)'
+                },
+                children: "[ Initializing Diagram... ]"
+            }, void 0, false, {
+                fileName: "[project]/src/components/Mermaid.js",
+                lineNumber: 77,
+                columnNumber: 25
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                ref: ref,
+                style: {
+                    display: loading ? 'none' : 'block'
+                }
+            }, void 0, false, {
+                fileName: "[project]/src/components/Mermaid.js",
+                lineNumber: 78,
+                columnNumber: 13
+            }, this)
+        ]
+    }, id, true, {
         fileName: "[project]/src/components/Mermaid.js",
-        lineNumber: 48,
+        lineNumber: 65,
         columnNumber: 9
     }, this);
 }
-_s(Mermaid, "8uVE59eA/r6b92xF80p7sH8rXLk=");
+_s(Mermaid, "JZCfC3Qw/bmtDqqxxFQtPrkY3zg=");
 _c = Mermaid;
 var _c;
 __turbopack_context__.k.register(_c, "Mermaid");

@@ -19,9 +19,13 @@ export default function Sidebar() {
         { name: '02_Systems', path: '/systems' },
         { name: '03_Design_Notes', path: '/design-notes' },
         { name: '04_Applied_AI', path: '/ai' },
-        { name: '05_Live_Status', path: '/demo' },
-        { name: '06_Philosophy', path: '/philosophy' },
+        { name: '05_Philosophy', path: '/philosophy' },
+        { name: '06_Contact', path: '/contact' },
     ];
+
+    const handleLinkClick = () => {
+        setMobileOpen(false);
+    };
 
     return (
         <>
@@ -34,20 +38,27 @@ export default function Sidebar() {
                     top: '1rem',
                     right: '1rem',
                     zIndex: 100,
-                    background: 'var(--bg-secondary)',
-                    border: '1px solid var(--border-color)',
-                    padding: '0.5rem',
+                    background: 'var(--bg-primary)',
+                    border: '1px solid var(--text-primary)',
+                    padding: '0.4rem 0.8rem',
                     color: 'var(--text-primary)',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    fontFamily: 'monospace',
+                    fontWeight: 'bold',
+                    fontSize: '0.8rem',
+                    textTransform: 'uppercase',
+                    boxShadow: '2px 2px 0px rgba(0,0,0,0.2)'
                 }}
             >
-                {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                {mobileOpen ? '[ CLOSE ]' : '[ MENU ]'}
             </button>
 
             {/* Sidebar Aside */}
             <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
                 <div className="nav-section">
-                    <Link href="/" className="nav-link" style={{ fontWeight: 'bold' }}>YASH KARTHIYA</Link>
+                    <Link href="/" className="nav-link" onClick={handleLinkClick} style={{ fontWeight: '900', fontSize: '1.1rem', letterSpacing: '-0.5px' }}>
+                        YASH KARTHIYA
+                    </Link>
                     <div className="text-sec" style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
                         Backend Systems &<br />Applied AI
                     </div>
@@ -59,6 +70,7 @@ export default function Sidebar() {
                         <Link
                             key={link.path}
                             href={link.path}
+                            onClick={handleLinkClick}
                             className={`nav-link ${isActive(link.path) ? 'active' : ''}`}
                         >
                             {link.name}
@@ -68,7 +80,7 @@ export default function Sidebar() {
 
                 <div className="nav-section" style={{ marginTop: 'auto' }}>
                     <span className="nav-header">Links</span>
-                    <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: 'var(--text-primary)' }}>Resume (PDF)</a>
+                    <a href="/resume.pdf" download="Yash_Karthiya_Resume" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: 'var(--text-primary)' }}>Resume (PDF)</a>
                     <a href="https://github.com/NotYash1066" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
                     <a href="https://www.linkedin.com/in/yash-karthiya-b03906336/" target="_blank" rel="noopener noreferrer" className="nav-link">LinkedIn</a>
                     <a href="mailto:yash.karthiya.1066@gmail.com" className="nav-link">Email</a>
