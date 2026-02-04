@@ -62,20 +62,19 @@ export default function Mermaid({ chart, id }) {
     }, [chart, id]);
 
     return (
-        <div key={id} className="mermaid-container" style={{
-            textAlign: 'center',
-            padding: '1rem',
-            background: 'var(--bg-secondary)',
-            border: '1px solid var(--border-color)',
-            marginBottom: '1rem',
-            overflowX: 'auto',
-            minHeight: '100px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        }}>
-            {loading && <div style={{ fontFamily: 'monospace', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>[ Initializing Diagram... ]</div>}
-            <div ref={ref} style={{ display: loading ? 'none' : 'block' }} />
+        <div key={id} className="mermaid-frame">
+            <div className="mermaid-frame__bar">
+                <div className="mermaid-frame__title">SYSTEM DIAGRAM</div>
+                <div className="mermaid-frame__leds">
+                    <span />
+                    <span />
+                    <span />
+                </div>
+            </div>
+            <div className="mermaid-container">
+                {loading && <div className="mermaid-loading">[ Initializing Diagram... ]</div>}
+                <div ref={ref} style={{ display: loading ? 'none' : 'block' }} />
+            </div>
         </div>
     );
 }

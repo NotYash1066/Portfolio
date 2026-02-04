@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { projects } from '@/data/projects';
+import { MotionSection, MotionCard } from '@/components/MotionSection';
+import TypewriterText from '@/components/TypewriterText';
 
 export const metadata = {
     title: 'Systems Architecture | Yash Karthiya',
@@ -9,18 +11,20 @@ export const metadata = {
 export default function SystemsPage() {
     return (
         <div className="section-container">
-            <h1>SYSTEMS ARCHITECTURE</h1>
-            <p style={{ marginBottom: '3rem' }}>
-                A collection of engineering case studies focusing on backend architecture,
-                system design, and practical AI implementation.
-            </p>
+            <MotionSection id="systems" data-rail="Systems">
+                <h1><TypewriterText text="SYSTEMS ARCHITECTURE" /></h1>
+                <p style={{ marginBottom: '3rem' }}>
+                    A collection of engineering case studies focusing on backend architecture,
+                    system design, and practical AI implementation.
+                </p>
+            </MotionSection>
 
-            <div className="projects-grid">
-                {projects.map((project) => (
-                    <div key={project.id} className="project-card mb-2" style={{ border: '1px solid var(--border-color)', padding: '1.5rem' }}>
+            <div className="projects-grid" id="case-studies" data-rail="Case Studies">
+                {projects.map((project, index) => (
+                    <MotionCard key={project.id} className="project-card mb-2" delay={index * 0.05}>
                         <div className="flex-row" style={{ justifyContent: 'space-between', marginBottom: '1rem' }}>
                             <h2 style={{ margin: 0, fontSize: '1.2rem' }}>{project.title}</h2>
-                            <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>ID: {project.id}</span>
+                            <span className="project-tag">ID {project.id}</span>
                         </div>
 
                         <p className="text-sec" style={{ marginBottom: '1.5rem' }}>
@@ -29,13 +33,14 @@ export default function SystemsPage() {
 
                         <div style={{ marginBottom: '1.5rem' }}>
                             <span className="nav-header">Tech Stack</span>
-                            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                            <div className="project-meta">
                                 {project.techStack.map(tech => (
                                     <span key={tech} style={{
                                         fontSize: '0.8rem',
                                         padding: '0.1rem 0.4rem',
                                         border: '1px solid var(--border-color)',
-                                        background: 'var(--bg-secondary)'
+                                        background: 'rgba(12, 15, 20, 0.7)',
+                                        borderRadius: '999px'
                                     }}>
                                         {tech}
                                     </span>
@@ -44,16 +49,10 @@ export default function SystemsPage() {
                         </div>
 
                         <Link href={`/systems/${project.id}?id=${project.id}`}
-                            style={{
-                                display: 'inline-block',
-                                border: '1px solid var(--text-primary)',
-                                padding: '0.5rem 1rem',
-                                fontSize: '0.9rem',
-                                textTransform: 'uppercase'
-                            }}>
+                            className="cta-link">
                             View System Architecture &gt;&gt;
                         </Link>
-                    </div>
+                    </MotionCard>
                 ))}
             </div>
         </div>

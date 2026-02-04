@@ -1,19 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import SlideToSend from '@/components/SlideToSend';
 
 export default function ContactForm() {
     const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+    const formRef = useRef(null);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const submitForm = async (formElement) => {
         setStatus('submitting');
 
         const formData = {
-            name: e.target.name.value,
-            email: e.target.email.value,
-            subject: e.target.subject.value,
-            message: e.target.message.value,
+            name: formElement.name.value,
+            email: formElement.email.value,
+            subject: formElement.subject.value,
+            message: formElement.message.value,
         };
 
         try {
@@ -25,7 +26,7 @@ export default function ContactForm() {
 
             if (res.ok) {
                 setStatus('success');
-                e.target.reset();
+                formElement.reset();
             } else {
                 setStatus('error');
             }
@@ -35,8 +36,17 @@ export default function ContactForm() {
         }
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
+
     return (
-        <form onSubmit={handleSubmit} style={{ maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="panel"
+            style={{ maxWidth: '640px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+        >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <label htmlFor="name" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Name</label>
                 <input
@@ -106,22 +116,15 @@ export default function ContactForm() {
                 />
             </div>
 
-            <button
-                type="submit"
+            <SlideToSend
                 disabled={status === 'submitting' || status === 'success'}
-                style={{
-                    padding: '1rem',
-                    background: status === 'success' ? 'var(--accent-color)' : 'var(--text-primary)',
-                    color: 'var(--bg-primary)',
-                    border: 'none',
-                    fontWeight: 'bold',
-                    cursor: status === 'submitting' ? 'wait' : 'pointer',
-                    textTransform: 'uppercase',
-                    marginTop: '1rem'
+                message={status === 'success' ? 'Message Sent' : 'Slide to Send'}
+                onSend={() => {
+                    if (formRef.current && formRef.current.reportValidity()) {
+                        submitForm(formRef.current);
+                    }
                 }}
-            >
-                {status === 'submitting' ? 'Transmitting...' : status === 'success' ? 'Message Sent' : 'Send Transmission'}
-            </button>
+            />
 
             {status === 'success' && (
                 <div style={{ marginTop: '1rem', color: 'var(--accent-color)', border: '1px solid var(--accent-color)', padding: '1rem' }}>

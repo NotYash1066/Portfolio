@@ -146,6 +146,6 @@ export const projects = [
             'OCR Accuracy: Improved text extraction from curved packaging surfaces using OpenCV preprocessing.',
             'Latency: Parallelized database lookups to return "Safe" ingredients immediately while processing "Unknowns" in background.'
         ],
-        repoLink: 'https://github.com/NotYash1066/Portfolio'
+        repoLink: 'https://github.com/NotYash1066/DU_Hacks_5_0_Runtime_Rebels_Safe_Plate'
     }
 ];

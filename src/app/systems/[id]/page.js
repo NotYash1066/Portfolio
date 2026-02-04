@@ -1,7 +1,8 @@
 import { projects } from '@/data/projects';
 import Link from 'next/link';
 import Mermaid from '@/components/Mermaid';
-import Breadcrumbs from '@/components/Breadcrumbs';
+import { MotionSection } from '@/components/MotionSection';
+import TypewriterText from '@/components/TypewriterText';
 
 // Generate static params for all projects
 export async function generateStaticParams() {
@@ -47,23 +48,27 @@ export default async function ProjectPage({ params }) {
 
     return (
         <div className="section-container">
-            <Link href="/systems" className="text-sec" style={{ fontSize: '0.9rem', marginBottom: '2rem', display: 'block' }}>
-                &lt; Back to Index
-            </Link>
+            <MotionSection id="overview" data-rail="Overview">
+                <Link href="/systems" className="text-sec" style={{ fontSize: '0.9rem', marginBottom: '2rem', display: 'block' }}>
+                    &lt; Back to Index
+                </Link>
 
-            <h1 style={{ border: 'none', marginBottom: '0.5rem' }}>{project.title}</h1>
-            <div className="flex-row" style={{ marginBottom: '2rem' }}>
-                {project.techStack.map(tech => (
-                    <span key={tech} style={{ fontSize: '0.8rem', color: 'var(--accent-color)' }}>[{tech}]</span>
-                ))}
-            </div>
+                <h1 style={{ border: 'none', marginBottom: '0.5rem' }}>
+                    <TypewriterText text={project.title} />
+                </h1>
+                <div className="flex-row" style={{ marginBottom: '2rem' }}>
+                    {project.techStack.map(tech => (
+                        <span key={tech} style={{ fontSize: '0.8rem', color: 'var(--accent-color)' }}>[{tech}]</span>
+                    ))}
+                </div>
+            </MotionSection>
 
-            <div className="case-study-section mb-2">
+            <MotionSection delay={0.1} className="case-study-section mb-2" id="context" data-rail="Context">
                 <h3>01_Context & Problem</h3>
                 <p className="text-sec" style={{ maxWidth: '700px' }}>{project.problemStatement}</p>
-            </div>
+            </MotionSection>
 
-            <div className="case-study-section mb-2">
+            <MotionSection delay={0.15} className="case-study-section mb-2" id="architecture" data-rail="Architecture">
                 <h3>02_Architecture & Design</h3>
                 {project.mermaid && (
                     <Mermaid chart={project.mermaid} id={project.id} />
@@ -82,9 +87,9 @@ export default async function ProjectPage({ params }) {
                     ))}
                 </div>
                 <p className="text-sec">{project.solution}</p>
-            </div>
+            </MotionSection>
 
-            <div className="case-study-section mb-2">
+            <MotionSection delay={0.2} className="case-study-section mb-2" id="decisions" data-rail="Decisions">
                 <h3>03_Key Technical Decisions</h3>
                 <ul style={{ listStyle: 'none', padding: 0 }}>
                     {project.technicalDecisions.map((decision, i) => (
@@ -93,9 +98,9 @@ export default async function ProjectPage({ params }) {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </MotionSection>
 
-            <div className="case-study-section mb-2">
+            <MotionSection delay={0.25} className="case-study-section mb-2" id="challenges" data-rail="Challenges">
                 <h3>04_Challenges & Resolutions</h3>
                 <div className="border-box">
                     {project.challenges.map((challenge, i) => (
@@ -104,13 +109,15 @@ export default async function ProjectPage({ params }) {
                         </div>
                     ))}
                 </div>
-            </div>
+            </MotionSection>
 
-            <div style={{ marginTop: '3rem' }}>
-                <a href={project.repoLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
-                    [View Source Code on GitHub]
-                </a>
-            </div>
+            <MotionSection delay={0.3} id="source" data-rail="Source">
+                <div style={{ marginTop: '3rem' }}>
+                    <a href={project.repoLink} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'underline' }}>
+                        [View Source Code on GitHub]
+                    </a>
+                </div>
+            </MotionSection>
         </div>
     );
 }

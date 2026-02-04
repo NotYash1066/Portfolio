@@ -56,12 +56,13 @@ export default function Sidebar() {
             {/* Sidebar Aside */}
             <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
                 <div className="nav-section">
-                    <Link href="/" className="nav-link" onClick={handleLinkClick} style={{ fontWeight: '900', fontSize: '1.1rem', letterSpacing: '-0.5px' }}>
+                    <Link href="/" className="nav-link brand" onClick={handleLinkClick}>
                         YASH KARTHIYA
                     </Link>
                     <div className="text-sec" style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
                         Backend Systems &<br />Applied AI
                     </div>
+                    <div className="project-tag" style={{ marginTop: '0.8rem' }}>Systems Focused</div>
                 </div>
 
                 <nav className="nav-section">

@@ -2,6 +2,8 @@ import './globals.css';
 import Link from 'next/link';
 import Sidebar from '@/components/Sidebar';
 import CommandPalette from '@/components/CommandPalette';
+import ScrollRail from '@/components/ScrollRail';
+import CursorTrail from '@/components/CursorTrail';
 
 export const metadata = {
     metadataBase: new URL('https://yashkarthiya.in'),
@@ -10,9 +12,12 @@ export const metadata = {
         template: '%s | Yash Karthiya'
     },
     description: 'Engineering documentation of Yash Karthiya. Specializing in high-throughput backend systems, distributed architectures, and applied AI pipelines. Seeking Backend Engineering Intern roles in Ahmedabad and RAG Engineer positions.',
-    keywords: ['Backend Engineer', 'Systems Architect', 'Distributed Systems', 'Applied AI', 'Spring Boot', 'FastAPI', 'System Design', 'Yash Karthiya', 'Backend Engineering Intern Ahmedabad', 'AI Engineering Intern', 'RAG Engineer'],
+    keywords: ['Backend Engineer', 'Systems Architect', 'Distributed Systems', 'Applied AI', 'Spring Boot', 'FastAPI', 'System Design', 'Yash Karthiya', 'Yash Karathiya', 'Backend Engineering Intern Ahmedabad', 'AI Engineering Intern', 'RAG Engineer'],
     authors: [{ name: 'Yash Karthiya', url: 'https://yashkarthiya.in' }],
     creator: 'Yash Karthiya',
+    alternates: {
+        canonical: 'https://yashkarthiya.in',
+    },
     openGraph: {
         type: 'website',
         locale: 'en_US',
@@ -52,6 +57,7 @@ const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: 'Yash Karthiya',
+    alternateName: ['Yash Karathiya'],
     url: 'https://yashkarthiya.in',
     jobTitle: 'Backend Engineer',
     sameAs: [
@@ -64,7 +70,12 @@ const jsonLd = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body>
+            <body className="body-root">
+                <div className="fx-bg" aria-hidden="true" />
+                <div className="orb orb-1" aria-hidden="true" />
+                <div className="orb orb-2" aria-hidden="true" />
+                <div className="orb orb-3" aria-hidden="true" />
+                <CursorTrail />
                 <div className="layout-container">
                     <script
                         type="application/ld+json"
@@ -72,6 +83,7 @@ export default function RootLayout({ children }) {
                     />
                     <Sidebar />
                     <CommandPalette />
+                    <ScrollRail />
 
                     <main className="content">
                         {children}

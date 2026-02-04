@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { MotionCard } from '@/components/MotionSection';
 
 export default function DesignNoteList({ notes }) {
     const [expanded, setExpanded] = useState({});
@@ -14,11 +15,13 @@ export default function DesignNoteList({ notes }) {
 
     return (
         <div className="notes-list">
-            {notes.map(note => (
-                <div key={note.id} style={{ marginBottom: '3rem', borderLeft: '2px solid var(--border-color)', paddingLeft: '1.5rem' }}>
-                    <div className="text-sec" style={{ fontSize: '0.8rem', fontFamily: 'monospace' }}>{note.date}</div>
-                    <h2 style={{ marginTop: '0.5rem', marginBottom: '0.5rem', border: 'none', fontSize: '1.3rem' }}>{note.title}</h2>
-                    <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>{note.summary}</p>
+            {notes.map((note, index) => (
+                <MotionCard key={note.id} className="panel" delay={index * 0.05} style={{ marginBottom: '2.5rem' }}>
+                    {note.date ? (
+                        <div className="project-tag" style={{ marginBottom: '0.8rem' }}>{note.date}</div>
+                    ) : null}
+                    <h2 style={{ marginTop: '0.2rem', marginBottom: '0.5rem', border: 'none', fontSize: '1.3rem' }}>{note.title}</h2>
+                    <p style={{ marginBottom: '0.8rem', fontWeight: 'bold' }}>{note.summary}</p>
 
                     <div style={{ fontSize: '0.9rem', lineHeight: '1.6' }}>
                         {expanded[note.id] ? (
@@ -43,7 +46,7 @@ export default function DesignNoteList({ notes }) {
                             </p>
                         )}
                     </div>
-                </div>
+                </MotionCard>
             ))}
         </div>
     );
