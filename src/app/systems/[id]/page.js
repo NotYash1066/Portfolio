@@ -47,8 +47,8 @@ export default async function ProjectPage({ params }) {
     }
 
     return (
-        <div className="section-container">
-            <MotionSection id="overview" data-rail="Overview">
+        <div className="section-container system-detail">
+            <MotionSection id="overview" data-rail="Overview" className="hero">
                 <Link href="/systems" className="text-sec" style={{ fontSize: '0.9rem', marginBottom: '2rem', display: 'block' }}>
                     &lt; Back to Index
                 </Link>
@@ -64,12 +64,12 @@ export default async function ProjectPage({ params }) {
             </MotionSection>
 
             <MotionSection delay={0.1} className="case-study-section mb-2" id="context" data-rail="Context">
-                <h3>01_Context & Problem</h3>
+                <h3>01 Context & Problem</h3>
                 <p className="text-sec" style={{ maxWidth: '700px' }}>{project.problemStatement}</p>
             </MotionSection>
 
             <MotionSection delay={0.15} className="case-study-section mb-2" id="architecture" data-rail="Architecture">
-                <h3>02_Architecture & Design</h3>
+                <h3>02 Architecture & Design</h3>
                 {project.mermaid && (
                     <Mermaid chart={project.mermaid} id={project.id} />
                 )}
@@ -90,24 +90,26 @@ export default async function ProjectPage({ params }) {
             </MotionSection>
 
             <MotionSection delay={0.2} className="case-study-section mb-2" id="decisions" data-rail="Decisions">
-                <h3>03_Key Technical Decisions</h3>
-                <ul style={{ listStyle: 'none', padding: 0 }}>
+                <h3>03 Key Technical Decisions</h3>
+                <ul className="decision-list">
                     {project.technicalDecisions.map((decision, i) => (
-                        <li key={i} style={{ marginBottom: '1rem', paddingLeft: '1rem', borderLeft: '2px solid var(--border-color)' }}>
-                            <strong style={{ color: 'var(--text-primary)' }}>Decision:</strong> <span className="text-sec">{decision}</span>
+                        <li key={i} className="decision-item">
+                            <strong className="decision-label">Decision:</strong> <span className="text-sec">{decision}</span>
                         </li>
                     ))}
                 </ul>
             </MotionSection>
 
             <MotionSection delay={0.25} className="case-study-section mb-2" id="challenges" data-rail="Challenges">
-                <h3>04_Challenges & Resolutions</h3>
+                <h3>04 Challenges & Resolutions</h3>
                 <div className="border-box">
+                    <div className="challenge-list">
                     {project.challenges.map((challenge, i) => (
-                        <div key={i} style={{ marginBottom: '0.5rem' }}>
-                            <span style={{ color: 'var(--warning)' }}>! WARNING:</span> <span className="text-sec">{challenge}</span>
+                        <div key={i} className="challenge-item">
+                            <span className="challenge-flag">! Warning:</span> <span className="text-sec">{challenge}</span>
                         </div>
                     ))}
+                    </div>
                 </div>
             </MotionSection>
 

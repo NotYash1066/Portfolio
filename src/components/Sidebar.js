@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Sidebar() {
     const pathname = usePathname();
@@ -15,12 +15,12 @@ export default function Sidebar() {
     };
 
     const navLinks = [
-        { name: '01_Home', path: '/' },
-        { name: '02_Systems', path: '/systems' },
-        { name: '03_Design_Notes', path: '/design-notes' },
-        { name: '04_Applied_AI', path: '/ai' },
-        { name: '05_Philosophy', path: '/philosophy' },
-        { name: '06_Contact', path: '/contact' },
+        { name: '01 Overview', path: '/' },
+        { name: '02 Systems', path: '/systems' },
+        { name: '03 Design Notes', path: '/design-notes' },
+        { name: '04 Applied AI', path: '/ai' },
+        { name: '05 Philosophy', path: '/philosophy' },
+        { name: '06 Contact', path: '/contact' },
     ];
 
     const handleLinkClick = () => {
@@ -29,40 +29,35 @@ export default function Sidebar() {
 
     return (
         <>
-            {/* Mobile Toggle Button */}
-            <button
-                className="mobile-toggle"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                style={{
-                    position: 'fixed',
-                    top: '1rem',
-                    right: '1rem',
-                    zIndex: 100,
-                    background: 'var(--bg-primary)',
-                    border: '1px solid var(--text-primary)',
-                    padding: '0.4rem 0.8rem',
-                    color: 'var(--text-primary)',
-                    cursor: 'pointer',
-                    fontFamily: 'monospace',
-                    fontWeight: 'bold',
-                    fontSize: '0.8rem',
-                    textTransform: 'uppercase',
-                    boxShadow: '2px 2px 0px rgba(0,0,0,0.2)'
-                }}
-            >
-                {mobileOpen ? '[ CLOSE ]' : '[ MENU ]'}
-            </button>
+            <div className="mobile-controls">
+                <ThemeToggle compact className="theme-toggle--mobile" />
+                <button
+                    className="mobile-toggle"
+                    onClick={() => setMobileOpen(!mobileOpen)}
+                    type="button"
+                    aria-expanded={mobileOpen}
+                    aria-controls="site-sidebar"
+                >
+                    {mobileOpen ? 'Close' : 'Menu'}
+                </button>
+            </div>
 
-            {/* Sidebar Aside */}
-            <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
-                <div className="nav-section">
-                    <Link href="/" className="nav-link brand" onClick={handleLinkClick}>
-                        YASH KARTHIYA
+            <aside id="site-sidebar" className={`sidebar ${mobileOpen ? 'open' : ''}`}>
+                <div>
+                    <Link href="/" className="brand" onClick={handleLinkClick}>
+                        Yash Karthiya
                     </Link>
-                    <div className="text-sec" style={{ fontSize: '0.8rem', marginTop: '0.5rem' }}>
-                        Backend Systems &<br />Applied AI
+                    <div className="brand-sub">
+                        Backend Systems & Applied AI
                     </div>
-                    <div className="project-tag" style={{ marginTop: '0.8rem' }}>Systems Focused</div>
+                    <div className="sidebar-meta">
+                        <span>Ahmedabad, IN</span>
+                        <span>Open to Backend Internships</span>
+                    </div>
+                    <div className="sidebar-badges">
+                        <span className="project-tag">Systems Focused</span>
+                        <span className="project-tag">RAG + Distributed</span>
+                    </div>
                 </div>
 
                 <nav className="nav-section">
@@ -81,27 +76,33 @@ export default function Sidebar() {
 
                 <div className="nav-section" style={{ marginTop: 'auto' }}>
                     <span className="nav-header">Links</span>
-                    <a href="/resume.pdf" download="Yash_Karthiya_Resume" target="_blank" rel="noopener noreferrer" className="nav-link" style={{ color: 'var(--text-primary)' }}>Resume (PDF)</a>
-                    <a href="https://github.com/NotYash1066" target="_blank" rel="noopener noreferrer" className="nav-link">GitHub</a>
-                    <a href="https://www.linkedin.com/in/yash-karthiya-b03906336/" target="_blank" rel="noopener noreferrer" className="nav-link">LinkedIn</a>
+                    <a
+                        href="/resume.pdf"
+                        download="Yash_Karthiya_Resume"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="nav-link"
+                    >
+                        Resume (PDF)
+                    </a>
+                    <a href="https://github.com/NotYash1066" target="_blank" rel="noopener noreferrer" className="nav-link">
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/yash-karthiya-b03906336/" target="_blank" rel="noopener noreferrer" className="nav-link">
+                        LinkedIn
+                    </a>
                 </div>
 
-                <div style={{ marginTop: '2rem', fontSize: '0.7rem', color: '#444', borderTop: '1px solid #222', paddingTop: '1rem' }}>
-                    <span style={{ border: '1px solid #333', borderRadius: '3px', padding: '0 2px' }}>Ctrl</span> + <span style={{ border: '1px solid #333', borderRadius: '3px', padding: '0 2px' }}>K</span> to search
+                <div className="sidebar-hint">
+                    <kbd>Ctrl</kbd> + <kbd>K</kbd> to search
                 </div>
+
+                <ThemeToggle className="theme-toggle--sidebar" />
             </aside>
 
-            {/* Overlay for mobile when menu is open */}
             {mobileOpen && (
                 <div
                     onClick={() => setMobileOpen(false)}
-                    style={{
-                        position: 'fixed',
-                        inset: 0,
-                        background: 'rgba(0,0,0,0.5)',
-                        zIndex: 40,
-                        backdropFilter: 'blur(2px)' // nice glass effect
-                    }}
                     className="mobile-overlay"
                 />
             )}

@@ -1,5 +1,4 @@
 import './globals.css';
-import Link from 'next/link';
 import Sidebar from '@/components/Sidebar';
 import CommandPalette from '@/components/CommandPalette';
 import ScrollRail from '@/components/ScrollRail';
@@ -67,10 +66,25 @@ const jsonLd = {
     knowsAbout: ['Backend Engineering', 'Distrubuted Systems', 'System Architecture', 'Applied AI']
 };
 
+const themeBootScript = `
+    (function () {
+        try {
+            var root = document.documentElement;
+            var stored = localStorage.getItem('yk-theme');
+            var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            var theme = stored === 'dark' || stored === 'light' ? stored : preferred;
+            root.dataset.theme = theme;
+        } catch (e) {
+            document.documentElement.dataset.theme = 'light';
+        }
+    })();
+`;
+
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body className="body-root">
+                <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
                 <div className="fx-bg" aria-hidden="true" />
                 <div className="orb orb-1" aria-hidden="true" />
                 <div className="orb orb-2" aria-hidden="true" />
@@ -88,9 +102,9 @@ export default function RootLayout({ children }) {
                     <main className="content">
                         {children}
 
-                        <footer style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid var(--border-color)', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+                        <footer className="site-footer">
                             <p>System reliability • Trust • Engineering Thinking</p>
-                            <p>© 2027 Yash Karthiya. Built with Next.js (SSG).</p>
+                            <p>© 2026 Yash Karthiya. Built with Next.js (SSG).</p>
                         </footer>
                     </main>
                 </div>

@@ -11,9 +11,10 @@ export const metadata = {
 export default function SystemsPage() {
     return (
         <div className="section-container">
-            <MotionSection id="systems" data-rail="Systems">
-                <h1><TypewriterText text="SYSTEMS ARCHITECTURE" /></h1>
-                <p style={{ marginBottom: '3rem' }}>
+            <MotionSection id="systems" data-rail="Systems" className="hero">
+                <div className="hero-eyebrow">Case Study Index</div>
+                <h1><TypewriterText text="Systems Architecture" /></h1>
+                <p className="hero-sub" style={{ marginBottom: '0.5rem' }}>
                     A collection of engineering case studies focusing on backend architecture,
                     system design, and practical AI implementation.
                 </p>
@@ -39,7 +40,7 @@ export default function SystemsPage() {
                                         fontSize: '0.8rem',
                                         padding: '0.1rem 0.4rem',
                                         border: '1px solid var(--border-color)',
-                                        background: 'rgba(12, 15, 20, 0.7)',
+                                        background: 'var(--surface-muted)',
                                         borderRadius: '999px'
                                     }}>
                                         {tech}
