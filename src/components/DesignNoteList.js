@@ -16,7 +16,7 @@ export default function DesignNoteList({ notes }) {
     return (
         <div className="notes-list">
             {notes.map((note, index) => (
-                <MotionCard key={note.id} className="panel" delay={index * 0.05} style={{ marginBottom: '2.5rem' }}>
+                <MotionCard key={note.id} className="panel panel-ruled" delay={index * 0.05} style={{ marginBottom: '2.5rem' }}>
                     {note.date ? (
                         <div className="project-tag" style={{ marginBottom: '0.8rem' }}>{note.date}</div>
                     ) : null}

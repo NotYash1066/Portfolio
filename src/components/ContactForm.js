@@ -44,75 +44,49 @@ export default function ContactForm() {
         <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="panel"
-            style={{ maxWidth: '640px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+            className="panel contact-form"
         >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="name" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Name</label>
+            <div className="form-field">
+                <label htmlFor="name" className="form-label">Name</label>
                 <input
                     type="text"
                     id="name"
                     name="name"
                     required
-                    style={{
-                        padding: '0.8rem',
-                        background: 'var(--bg-secondary)',
-                        border: '1px solid var(--border-color)',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'inherit'
-                    }}
+                    className="form-input"
                 />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="email" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Email</label>
+            <div className="form-field">
+                <label htmlFor="email" className="form-label">Email</label>
                 <input
                     type="email"
                     id="email"
                     name="email"
                     required
-                    style={{
-                        padding: '0.8rem',
-                        background: 'var(--bg-secondary)',
-                        border: '1px solid var(--border-color)',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'inherit'
-                    }}
+                    className="form-input"
                 />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="subject" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Subject</label>
+            <div className="form-field">
+                <label htmlFor="subject" className="form-label">Subject</label>
                 <input
                     type="text"
                     id="subject"
                     name="subject"
                     required
-                    style={{
-                        padding: '0.8rem',
-                        background: 'var(--bg-secondary)',
-                        border: '1px solid var(--border-color)',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'inherit'
-                    }}
+                    className="form-input"
                 />
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label htmlFor="message" style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>Message</label>
+            <div className="form-field">
+                <label htmlFor="message" className="form-label">Message</label>
                 <textarea
                     id="message"
                     name="message"
                     rows="6"
                     required
-                    style={{
-                        padding: '0.8rem',
-                        background: 'var(--bg-secondary)',
-                        border: '1px solid var(--border-color)',
-                        color: 'var(--text-primary)',
-                        fontFamily: 'inherit',
-                        resize: 'vertical'
-                    }}
+                    className="form-input"
                 />
             </div>
 
@@ -127,13 +101,13 @@ export default function ContactForm() {
             />
 
             {status === 'success' && (
-                <div style={{ marginTop: '1rem', color: 'var(--accent-color)', border: '1px solid var(--accent-color)', padding: '1rem' }}>
-                    Message received. I will respond to your frequency shortly.
+                <div className="form-status is-success">
+                    Message received. I will respond shortly.
                 </div>
             )}
 
             {status === 'error' && (
-                <div style={{ marginTop: '1rem', color: 'var(--error)', border: '1px solid var(--error)', padding: '1rem' }}>
+                <div className="form-status is-error">
                     Transmission failed. Please try again or email directly at yash.karthiya.1066@gmail.com.
                 </div>
             )}

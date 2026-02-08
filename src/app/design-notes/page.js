@@ -32,9 +32,10 @@ export default function DesignNotesPage() {
 
     return (
         <div className="section-container">
-            <MotionSection id="notes" data-rail="Notes">
-                <h1><TypewriterText text="DESIGN NOTES" /></h1>
-                <p style={{ marginBottom: '3rem' }}>
+            <MotionSection id="notes" data-rail="Notes" className="hero">
+                <div className="hero-eyebrow">Decision Records</div>
+                <h1><TypewriterText text="Design Notes" /></h1>
+                <p className="hero-sub" style={{ marginBottom: '0.5rem' }}>
                     Engineering logs, decision records, and technical essays. No fluff.
                 </p>
             </MotionSection>

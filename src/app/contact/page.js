@@ -11,9 +11,10 @@ export const metadata = {
 export default function ContactPage() {
     return (
         <div className="section-container">
-            <MotionSection id="contact" data-rail="Contact">
-                <h1><TypewriterText text="CONTACT" /></h1>
-                <p style={{ marginBottom: '2rem' }}>
+            <MotionSection id="contact" data-rail="Contact" className="hero">
+                <div className="hero-eyebrow">Let's Build</div>
+                <h1><TypewriterText text="Contact" /></h1>
+                <p className="hero-sub" style={{ marginBottom: '0.5rem' }}>
                     For collaborations, opportunities, or technical inquiries.
                 </p>
             </MotionSection>
@@ -22,7 +23,7 @@ export default function ContactPage() {
                 <div>
                     <ContactForm />
                 </div>
-                <div className="panel">
+                <div className="panel panel-ruled">
                     <div className="panel-title">Direct Line</div>
                     <p className="text-sec">
                         For quick replies, email directly at

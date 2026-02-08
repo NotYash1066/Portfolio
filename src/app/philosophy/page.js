@@ -9,8 +9,9 @@ export const metadata = {
 export default function PhilosophyPage() {
     return (
         <div className="section-container">
-            <MotionSection id="philosophy" data-rail="Overview">
-                <h1><TypewriterText text="PHILOSOPHY" /></h1>
+            <MotionSection id="philosophy" data-rail="Overview" className="hero">
+                <div className="hero-eyebrow">Engineering Mindset</div>
+                <h1><TypewriterText text="Philosophy" /></h1>
             </MotionSection>
 
             <MotionSection delay={0.1} className="philosophy-section" style={{ marginBottom: '4rem' }} id="backend-first" data-rail="Backend First">
@@ -27,7 +28,7 @@ export default function PhilosophyPage() {
                     "It works on my machine" is not an answer. I assume the network is unreliable,
                     the database will time out, and users will send malformed JSON.
                 </p>
-                <div className="panel" style={{ marginTop: '1rem', fontFamily: 'var(--font-body)' }}>
+                <div className="panel panel-ruled" style={{ marginTop: '1rem', fontFamily: 'var(--font-body)' }}>
                     &gt; logging.error("Transaction failed: " + e.message) <br />
                     &gt; metrics.increment("payment_failure") <br />
                     &gt; alert_admin() // if failure_rate &gt; 5%

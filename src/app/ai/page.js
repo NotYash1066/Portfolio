@@ -9,17 +9,18 @@ export const metadata = {
 export default function AIPage() {
     return (
         <div className="section-container">
-            <MotionSection id="ai-overview" data-rail="Overview">
-                <h1><TypewriterText text="APPLIED AI" /></h1>
+            <MotionSection id="ai-overview" data-rail="Overview" className="hero">
+                <div className="hero-eyebrow">Applied Practice</div>
+                <h1><TypewriterText text="Applied AI" /></h1>
 
-                <p style={{ marginBottom: '3rem' }}>
+                <p className="hero-sub" style={{ marginBottom: '0.5rem' }}>
                     AI is a tool, not a magic wand. My approach emphasizes restraint,
                     using deterministic code where possible and LLMs only where necessary.
                 </p>
             </MotionSection>
 
             <MotionSection delay={0.1} id="principles" data-rail="Principles">
-                <div className="panel mb-2">
+                <div className="panel panel-ruled mb-2">
                     <h3>Principles</h3>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                         <li style={{ marginBottom: '1rem' }}>

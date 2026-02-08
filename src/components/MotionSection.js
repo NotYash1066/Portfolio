@@ -58,21 +58,21 @@ export function MotionStagger({ children, className = '', delay = 0 }) {
 
 export function MotionCard({ children, className = '', delay = 0, style }) {
     const reduceMotion = useReducedMotion();
+    const mergedStyle = { transformStyle: 'preserve-3d', ...(style || {}) };
 
     if (reduceMotion) {
-        return <div className={className}>{children}</div>;
+        return <div className={className} style={style}>{children}</div>;
     }
 
     return (
         <motion.div
             className={className}
-            style={style}
+            style={mergedStyle}
             initial={{ opacity: 0, y: 20, scale: 0.98 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
-            style={{ transformStyle: 'preserve-3d' }}
         >
             {children}
         </motion.div>
